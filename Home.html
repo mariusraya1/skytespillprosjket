@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>spill.no</title>
+    
+    
+    
+    <style>
+        /* Reset default margin and padding */
+        body, html {
+            margin: 0;
+            padding: 0;
+           
+        }
+
+        
+
+        /* Style for the menu bar */
+        .menylinje {
+            background-color: #3a3a3a;
+            color: #fff; /* Text color */
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+        }
+
+       body{
+        background-color:#b0d7f2
+       }
+
+
+
+        .menylinje h1 {
+            flex:auto; /* Allow the heading to grow and fill available space */
+            margin-left: 25%;
+        }
+
+        
+        .button {
+            margin-right: 5px;
+            margin-left: 5px;
+            padding: 10px 20px;
+            background-color: #337ec5; /* Button color */
+            color: #fff; /* Text color */
+            text-decoration: none; 
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Hover effect */
+        .button:hover{
+            background-color: #78b5ed; /* Darker color on hover */
+        }
+
+        .boksholder{
+            display: flex; /* Use flexbox */
+            justify-content: space-between; /* Spacing between boxes */
+            margin-left: 5%;
+            width: 90%;
+            height: 600px;
+            background-color: #6e6e6e;
+            border: 2px solid #333;
+            border-radius: 30px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .box {
+            margin-right: 3%;
+            margin-left: 3%;
+            width: 48%; /* Adjust width as needed */
+            padding: 15px;
+            background-color: #ffffff; /* Change color as needed */
+            border: 1px solid #333;
+            border-radius: 30px;
+            box-sizing: border-box;
+        }
+
+        .snakebilde{
+        width: 75%;
+        margin-left: 50px;
+        }
+
+        .shooter{
+        width: 75%;
+        margin-left: 50px;
+        }
+
+        h3{
+            text-align: center;
+            font-size: 150%;
+        }
+
+        .buttonspill{
+            margin-left: 30%;
+            padding: 10px 20px;
+            background-color: #337ec5; /* Button color */
+            color: #fff; /* Text color */
+            text-decoration: none; 
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        .buttonspill:hover{
+            background-color: #78b5ed;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- Menu bar -->
+<div class="menylinje">
+    <div>
+        <a href="mainpage.html" class="button">Logg Inn</a>
+        <a href="registration.php" class="button">Lag Bruker</a>
+    </div>
+    <h1>spill.no</h1>
+        <a href="faq.html" class="button">FAQ</a> 
+</div>
+<br>
+<div class="boksholder">
+    <div class="box">
+        <h3>Bubbleshooter</h3>
+        <img src="shooter.jpg" alt="" class="shooter">
+        <br><br>
+        <a href="skyte.html" class="buttonspill">Spill Bubbleshooter!</a>
+    </div>
+    <div class="box">
+        <h3>Snake</h3>
+        <img src="snake.png" alt=""  class="snakebilde">
+        <br><br>
+        <a href="snake.html" class="buttonspill">Spill Snake!</a>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sak {
+            border: 1px solid black; 
+            width: 40%; 
+            height: 250px;
+            margin: 50px auto; 
+            padding: 10px; 
+            font-style: normal;
+            text-align: center; 
+        }
+        .sak textarea {
+            width: 95%; 
+            height: 95px; 
+            resize:none; 
+        }
+        .sak input[type="text"] {
+            width: 95%;
+            margin-bottom: 5px; 
+        }
+
+        .submit-container {
+            text-align: center; 
+        }
+
+        .sak button {
+            margin-top: 10px; 
+            display: inline-block; 
+        }
+    </style>
+</head>
+<body>
+    <div class="sak">
+        <form method="post" action="saktekst.php"> 
+            <input type="text" name="name" placeholder="Navn"><br>
+            <input type="text" name="email" placeholder="Epost"><br><br>
+            <textarea placeholder="Skriv noe her..." name="my_text"></textarea> 
+    </div>
+    <div class="submit-container">
+        <button type="submit">Send</button>
+    </div>
+</body>
+</html>
+

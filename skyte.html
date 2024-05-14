@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game</title>
+  <style>
+    
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      background-color: #353535;
+    }
+
+    #game-container {
+      position: relative;
+      text-align: center;
+    }
+
+    h1 {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+    }
+
+    canvas {
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="game-container">
+    <h1>(ikkebestemt navn)</h1>
+    <canvas id="gameCanvas" width="600" height="600"></canvas>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="p5.sound.min.js"></script>
+  <script>
+    let bullets = [];
+    let enemies = [];
+    let score = 0;
+    let gameOver = false;
+    let playerX; // Variable for player's x-position 
+
+    function setup() {
+      let canvas = createCanvas(550, 550);
+      canvas.parent('game-container');
+      playerX = width / 2; // Place the player in the middle of the canvas
+
+      for (let i = 0; i < 15; i++) {
+        let enemy = {
+          x: random(0, width),
+          y: random(-800, -120)
+        };
+        enemies.push(enemy);
+      }
+    }
+
+    function draw() {
+      background(142, 67, 148);
+      rectMode(CENTER);
+
+      if (gameOver) {
+        textSize(70);
+        textAlign(CENTER, CENTER);
+        fill(255);
+        text("Game Over", width / 2, height / 2 - 50);
+        textSize(20);
+        text("Click the screen to Restart", width / 2, height / 2 + 50);
+        return;
+      }
+
+      // Game in progress
+      if (millis() < 2100) {
+        textSize(40);
+        text("Get Ready", 310, 280, 300);
+
+        textSize(18);
+        text("Ikke la de treffe bakken", 314, 330, 300);
+      }
+
+      // Draw the player
+      fill(100);
+      circle(playerX, height - 50, 45); // Draw the player's body as a circle
+      fill(200); // Set the fill color for the rectangle
+      rect(playerX - 0, height - 70, 19, 40); // Draw a rectangle as the player's head
+      
+
+      fill(255);
+      for (let bullet of bullets) {
+        bullet.y -= 8;
+        circle(bullet.x, bullet.y, 10);
+      }
+
+      for (let enemy of enemies) {
+        enemy.y += 1;
+        rect(enemy.x, enemy.y, 15);
+        if (enemy.y > height) {
+          gameOver = true;
+        }
+      }
+
+      // Handle collisions
+      for (let enemy of enemies) {
+        for (let bullet of bullets) {
+          if (dist(enemy.x, enemy.y, bullet.x, bullet.y) < 10) {
+            enemies.splice(enemies.indexOf(enemy), 1);
+            bullets.splice(bullets.indexOf(bullet), 1);
+
+            let newEnemy = {
+              x: random(0, width),
+              y: random(-550, 0)
+            };
+            enemies.push(newEnemy);
+            score += 1;
+          }
+        }
+      }
+      textSize(35);
+      text(score, 15, 45);
+    }
+
+    function mouseMoved() {
+      if (!gameOver) {
+        playerX = mouseX;
+      }
+    }
+
+    function mouseClicked() {
+      if (gameOver) {
+        restartGame();
+      } else {
+        let bullet = {
+          x: playerX,
+          y: height - 50
+        };
+        bullets.push(bullet);
+      }
+    }
+
+    function keyPressed() {
+      if (key === 'R' || key === 'r') {
+        if (gameOver) {
+          restartGame();
+        }
+      }
+    }
+
+    function restartGame() {
+      bullets = [];
+      enemies = [];
+      score = 0;
+      gameOver = false;
+
+      for (let i = 0; i < 20; i++) {
+        let enemy = {
+          x: random(0, width),
+          y: random(-800, -120)
+        };
+        enemies.push(enemy);
+      }
+    }
+  </script>
+
+</body>
+
+</html>
